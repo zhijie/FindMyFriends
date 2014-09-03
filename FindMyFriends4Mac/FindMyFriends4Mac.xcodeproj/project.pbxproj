@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D586B19819B76FE80089DA15 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D586B19719B76FE80089DA15 /* Cocoa.framework */; };
+		D586B1A219B76FE80089DA15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D586B1A019B76FE80089DA15 /* InfoPlist.strings */; };
+		D586B1A419B76FE80089DA15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D586B1A319B76FE80089DA15 /* main.m */; };
+		D586B1A819B76FE80089DA15 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D586B1A619B76FE80089DA15 /* Credits.rtf */; };
+		D586B1AB19B76FE80089DA15 /* RSLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D586B1AA19B76FE80089DA15 /* RSLAppDelegate.m */; };
+		D586B1AE19B76FE80089DA15 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D586B1AC19B76FE80089DA15 /* MainMenu.xib */; };
+		D586B1B019B76FE80089DA15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D586B1AF19B76FE80089DA15 /* Images.xcassets */; };
+		D586B1B719B76FE80089DA15 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D586B1B619B76FE80089DA15 /* XCTest.framework */; };
+		D586B1B819B76FE80089DA15 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D586B19719B76FE80089DA15 /* Cocoa.framework */; };
+		D586B1C019B76FE80089DA15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D586B1BE19B76FE80089DA15 /* InfoPlist.strings */; };
+		D586B1C219B76FE80089DA15 /* FindMyFriends4MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D586B1C119B76FE80089DA15 /* FindMyFriends4MacTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D586B1B919B76FE80089DA15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D586B18C19B76FE80089DA15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D586B19319B76FE80089DA15;
+			remoteInfo = FindMyFriends4Mac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D586B19419B76FE80089DA15 /* FindMyFriends4Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyFriends4Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D586B19719B76FE80089DA15 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D586B19A19B76FE80089DA15 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D586B19B19B76FE80089DA15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D586B19C19B76FE80089DA15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D586B19F19B76FE80089DA15 /* FindMyFriends4Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindMyFriends4Mac-Info.plist"; sourceTree = "<group>"; };
+		D586B1A119B76FE80089DA15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D586B1A319B76FE80089DA15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D586B1A519B76FE80089DA15 /* FindMyFriends4Mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FindMyFriends4Mac-Prefix.pch"; sourceTree = "<group>"; };
+		D586B1A719B76FE80089DA15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		D586B1A919B76FE80089DA15 /* RSLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLAppDelegate.h; sourceTree = "<group>"; };
+		D586B1AA19B76FE80089DA15 /* RSLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSLAppDelegate.m; sourceTree = "<group>"; };
+		D586B1AD19B76FE80089DA15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D586B1AF19B76FE80089DA15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D586B1B519B76FE80089DA15 /* FindMyFriends4MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyFriends4MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D586B1B619B76FE80089DA15 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D586B1BD19B76FE80089DA15 /* FindMyFriends4MacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindMyFriends4MacTests-Info.plist"; sourceTree = "<group>"; };
+		D586B1BF19B76FE80089DA15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D586B1C119B76FE80089DA15 /* FindMyFriends4MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMyFriends4MacTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D586B19119B76FE80089DA15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B19819B76FE80089DA15 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D586B1B219B76FE80089DA15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B1B819B76FE80089DA15 /* Cocoa.framework in Frameworks */,
+				D586B1B719B76FE80089DA15 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D586B18B19B76FE80089DA15 = {
+			isa = PBXGroup;
+			children = (
+				D586B19D19B76FE80089DA15 /* FindMyFriends4Mac */,
+				D586B1BB19B76FE80089DA15 /* FindMyFriends4MacTests */,
+				D586B19619B76FE80089DA15 /* Frameworks */,
+				D586B19519B76FE80089DA15 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D586B19519B76FE80089DA15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D586B19419B76FE80089DA15 /* FindMyFriends4Mac.app */,
+				D586B1B519B76FE80089DA15 /* FindMyFriends4MacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D586B19619B76FE80089DA15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D586B19719B76FE80089DA15 /* Cocoa.framework */,
+				D586B1B619B76FE80089DA15 /* XCTest.framework */,
+				D586B19919B76FE80089DA15 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D586B19919B76FE80089DA15 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D586B19A19B76FE80089DA15 /* AppKit.framework */,
+				D586B19B19B76FE80089DA15 /* CoreData.framework */,
+				D586B19C19B76FE80089DA15 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D586B19D19B76FE80089DA15 /* FindMyFriends4Mac */ = {
+			isa = PBXGroup;
+			children = (
+				D586B1A919B76FE80089DA15 /* RSLAppDelegate.h */,
+				D586B1AA19B76FE80089DA15 /* RSLAppDelegate.m */,
+				D586B1AC19B76FE80089DA15 /* MainMenu.xib */,
+				D586B1AF19B76FE80089DA15 /* Images.xcassets */,
+				D586B19E19B76FE80089DA15 /* Supporting Files */,
+			);
+			path = FindMyFriends4Mac;
+			sourceTree = "<group>";
+		};
+		D586B19E19B76FE80089DA15 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D586B19F19B76FE80089DA15 /* FindMyFriends4Mac-Info.plist */,
+				D586B1A019B76FE80089DA15 /* InfoPlist.strings */,
+				D586B1A319B76FE80089DA15 /* main.m */,
+				D586B1A519B76FE80089DA15 /* FindMyFriends4Mac-Prefix.pch */,
+				D586B1A619B76FE80089DA15 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D586B1BB19B76FE80089DA15 /* FindMyFriends4MacTests */ = {
+			isa = PBXGroup;
+			children = (
+				D586B1C119B76FE80089DA15 /* FindMyFriends4MacTests.m */,
+				D586B1BC19B76FE80089DA15 /* Supporting Files */,
+			);
+			path = FindMyFriends4MacTests;
+			sourceTree = "<group>";
+		};
+		D586B1BC19B76FE80089DA15 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D586B1BD19B76FE80089DA15 /* FindMyFriends4MacTests-Info.plist */,
+				D586B1BE19B76FE80089DA15 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D586B19319B76FE80089DA15 /* FindMyFriends4Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D586B1C519B76FE80089DA15 /* Build configuration list for PBXNativeTarget "FindMyFriends4Mac" */;
+			buildPhases = (
+				D586B19019B76FE80089DA15 /* Sources */,
+				D586B19119B76FE80089DA15 /* Frameworks */,
+				D586B19219B76FE80089DA15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindMyFriends4Mac;
+			productName = FindMyFriends4Mac;
+			productReference = D586B19419B76FE80089DA15 /* FindMyFriends4Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D586B1B419B76FE80089DA15 /* FindMyFriends4MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D586B1C819B76FE80089DA15 /* Build configuration list for PBXNativeTarget "FindMyFriends4MacTests" */;
+			buildPhases = (
+				D586B1B119B76FE80089DA15 /* Sources */,
+				D586B1B219B76FE80089DA15 /* Frameworks */,
+				D586B1B319B76FE80089DA15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D586B1BA19B76FE80089DA15 /* PBXTargetDependency */,
+			);
+			name = FindMyFriends4MacTests;
+			productName = FindMyFriends4MacTests;
+			productReference = D586B1B519B76FE80089DA15 /* FindMyFriends4MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D586B18C19B76FE80089DA15 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RSL;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "___resolr___";
+				TargetAttributes = {
+					D586B1B419B76FE80089DA15 = {
+						TestTargetID = D586B19319B76FE80089DA15;
+					};
+				};
+			};
+			buildConfigurationList = D586B18F19B76FE80089DA15 /* Build configuration list for PBXProject "FindMyFriends4Mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D586B18B19B76FE80089DA15;
+			productRefGroup = D586B19519B76FE80089DA15 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D586B19319B76FE80089DA15 /* FindMyFriends4Mac */,
+				D586B1B419B76FE80089DA15 /* FindMyFriends4MacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D586B19219B76FE80089DA15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B1A219B76FE80089DA15 /* InfoPlist.strings in Resources */,
+				D586B1B019B76FE80089DA15 /* Images.xcassets in Resources */,
+				D586B1A819B76FE80089DA15 /* Credits.rtf in Resources */,
+				D586B1AE19B76FE80089DA15 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D586B1B319B76FE80089DA15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B1C019B76FE80089DA15 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D586B19019B76FE80089DA15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B1AB19B76FE80089DA15 /* RSLAppDelegate.m in Sources */,
+				D586B1A419B76FE80089DA15 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D586B1B119B76FE80089DA15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D586B1C219B76FE80089DA15 /* FindMyFriends4MacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D586B1BA19B76FE80089DA15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D586B19319B76FE80089DA15 /* FindMyFriends4Mac */;
+			targetProxy = D586B1B919B76FE80089DA15 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D586B1A019B76FE80089DA15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D586B1A119B76FE80089DA15 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D586B1A619B76FE80089DA15 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D586B1A719B76FE80089DA15 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		D586B1AC19B76FE80089DA15 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D586B1AD19B76FE80089DA15 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D586B1BE19B76FE80089DA15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D586B1BF19B76FE80089DA15 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D586B1C319B76FE80089DA15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D586B1C419B76FE80089DA15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D586B1C619B76FE80089DA15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindMyFriends4Mac/FindMyFriends4Mac-Prefix.pch";
+				INFOPLIST_FILE = "FindMyFriends4Mac/FindMyFriends4Mac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D586B1C719B76FE80089DA15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindMyFriends4Mac/FindMyFriends4Mac-Prefix.pch";
+				INFOPLIST_FILE = "FindMyFriends4Mac/FindMyFriends4Mac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D586B1C919B76FE80089DA15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FindMyFriends4Mac.app/Contents/MacOS/FindMyFriends4Mac";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindMyFriends4Mac/FindMyFriends4Mac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FindMyFriends4MacTests/FindMyFriends4MacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D586B1CA19B76FE80089DA15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FindMyFriends4Mac.app/Contents/MacOS/FindMyFriends4Mac";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindMyFriends4Mac/FindMyFriends4Mac-Prefix.pch";
+				INFOPLIST_FILE = "FindMyFriends4MacTests/FindMyFriends4MacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D586B18F19B76FE80089DA15 /* Build configuration list for PBXProject "FindMyFriends4Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D586B1C319B76FE80089DA15 /* Debug */,
+				D586B1C419B76FE80089DA15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D586B1C519B76FE80089DA15 /* Build configuration list for PBXNativeTarget "FindMyFriends4Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D586B1C619B76FE80089DA15 /* Debug */,
+				D586B1C719B76FE80089DA15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D586B1C819B76FE80089DA15 /* Build configuration list for PBXNativeTarget "FindMyFriends4MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D586B1C919B76FE80089DA15 /* Debug */,
+				D586B1CA19B76FE80089DA15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D586B18C19B76FE80089DA15 /* Project object */;
+}
