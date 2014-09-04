@@ -54,10 +54,10 @@
 //ipad
 @property (nonatomic, strong) UISplitViewController* splitController;
 //common
-@property (nonatomic, strong) RSLLoginViewController* loginController;
 @property (nonatomic, strong) RSLRegisterViewController* registerController;
 @property (nonatomic, strong) RSLMapViewController* mapController;
 @property (nonatomic, strong) RSLContactViewController* contactController;
+@property (nonatomic, strong) UIViewController* rootController;
 
 
 - (NSManagedObjectContext *)managedObjectContext_roster;
@@ -65,5 +65,6 @@
 
 - (BOOL)connect;
 - (void)disconnect;
+
 
 @end

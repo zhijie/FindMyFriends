@@ -7,8 +7,12 @@
 //
 
 #import "RSLMapViewController.h"
+#import "RSLAppDelegate.h"
+#import "RSLLoginViewController.h"
 
-@interface RSLMapViewController ()
+@interface RSLMapViewController () {
+    RSLLoginViewController* loginController;
+}
 
 @end
 
@@ -28,7 +32,22 @@
     [super viewDidLoad];
     self.title = @"Map";
 }
-
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+	if (![appDelegate connect])
+	{
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC);
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			loginController = [[RSLLoginViewController alloc] initWithNibName:@"RSLLoginViewController" bundle:nil];
+            RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate.rootController presentViewController:loginController animated:YES completion:nil];
+		});
+	}
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

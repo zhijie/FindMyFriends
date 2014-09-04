@@ -7,6 +7,8 @@
 //
 
 #import "RSLRegisterViewController.h"
+#import "RSLLoginViewController.h"
+#import "RSLAppDelegate.h"
 
 @interface RSLRegisterViewController ()
 
@@ -35,4 +37,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onRegister:(id)sender {
+}
+
+- (IBAction)login:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        RSLLoginViewController* loginController = [[RSLLoginViewController alloc] initWithNibName:@"RSLLoginViewController" bundle:nil];
+        RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.rootController presentViewController:loginController animated:YES completion:nil];
+    }];
+}
 @end

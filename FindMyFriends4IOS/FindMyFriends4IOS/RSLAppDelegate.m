@@ -63,11 +63,12 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize loginController;
 @synthesize registerController;
 @synthesize splitController;
 @synthesize mapController;
 @synthesize contactController;
+@synthesize rootController;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -87,7 +88,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	[self setupStream];
     
     mapController= [[RSLMapViewController alloc] initWithNibName:@"RSLMapViewController" bundle:nil];
-    UIViewController* rootController = nil;
+    
 	// Setup the view controllers
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         navigationController = [[UINavigationController alloc] initWithRootViewController:mapController];
@@ -108,15 +109,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     window.backgroundColor = [UIColor whiteColor];
 	[window setRootViewController:rootController];
 	[window makeKeyAndVisible];
-    
-	if (![self connect])
-	{
-		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC);
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			loginController = [[RSLLoginViewController alloc] initWithNibName:@"RSLLoginViewController" bundle:nil];
-			[rootController presentViewController:loginController animated:YES completion:NULL];
-		});
-	}
     
 	return YES;
 }
@@ -349,6 +341,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 		return NO;
 	}
     
+    myJID = [NSString stringWithFormat:@"%@@%@",myJID,SERVER_IP];
 	[xmppStream setMyJID:[XMPPJID jidWithString:myJID]];
 	password = myPassword;
     
