@@ -198,6 +198,7 @@
 		5D262A2519B847A400DE420C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D262A2419B847A400DE420C /* MessageUI.framework */; };
 		5D262A2719B847AE00DE420C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D262A2619B847AE00DE420C /* OpenGLES.framework */; };
 		5D262A2919B847B600DE420C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D262A2819B847B600DE420C /* QuartzCore.framework */; };
+		5D262A2B19B85E3600DE420C /* RSLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -640,6 +641,7 @@
 		5D262A2419B847A400DE420C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5D262A2619B847AE00DE420C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5D262A2819B847B600DE420C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSLContactViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -782,6 +784,7 @@
 				5D26290019B834E600DE420C /* RSLMapViewController.xib */,
 				5D26290319B8351900DE420C /* RSLContactViewController.h */,
 				5D26290419B8351900DE420C /* RSLContactViewController.m */,
+				5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1942,6 +1945,7 @@
 				5D262A2019B8475A00DE420C /* mapapi.bundle in Resources */,
 				5D2626C519B823D700DE420C /* Images.xcassets in Resources */,
 				5D2626F019B827B000DE420C /* RSLRegisterViewController.xib in Resources */,
+				5D262A2B19B85E3600DE420C /* RSLContactViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

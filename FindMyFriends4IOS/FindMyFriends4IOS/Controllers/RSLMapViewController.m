@@ -9,9 +9,11 @@
 #import "RSLMapViewController.h"
 #import "RSLAppDelegate.h"
 #import "RSLLoginViewController.h"
+#import "RSLContactViewController.h"
 
 @interface RSLMapViewController () {
     RSLLoginViewController* loginController;
+
 }
 
 @end
@@ -31,7 +33,36 @@
 {
     [super viewDidLoad];
     self.title = @"Map";
+    
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showContacts)];
+    leftBarButtonItem.title = @"Contacts";
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//        UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+//        if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+//            self.navigationItem.leftBarButtonItem = nil;
+//        }
+//    }
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(setting)];
+    rightBarButtonItem.title = @"Setting";
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    
 }
+-(void)setting
+{
+    
+}
+
+-(void)showContacts
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        RSLContactViewController* contacts = [[RSLContactViewController alloc] initWithNibName:@"RSLContactViewController" bundle:nil];
+        RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.rootController presentViewController:contacts animated:YES completion:nil];
+    }
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -58,9 +89,8 @@
 
 - (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController*)popoverController
 {
-//    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
-//    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-//    self.masterPopoverController = popoverController;
+    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+
 }
 
 
@@ -68,8 +98,8 @@
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
-//    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-//    self.masterPopoverController = nil;
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+
 }
 
 
@@ -89,21 +119,13 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-	// If the detail popover is presented, dismiss it.
-//	if (self.detailViewPopover != nil)
-//    {
-//		[self.detailViewPopover dismissPopoverAnimated:YES];
-//	}
+
 }
 
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-	// If the last button tapped is not nil, present the popover from that button.
-//	if (self.lastTappedButton != nil)
-//    {
-//		[self showPopover:self.lastTappedButton];
-//	}
+
 }
 
 @end

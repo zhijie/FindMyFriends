@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSLContactViewController : UIViewController
+@interface RSLContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 @end

@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 #define SERVER_IP @"121.199.30.240"
+#define JABBER_ROOM_IP @"conference.121.199.30.240"
 
 extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;

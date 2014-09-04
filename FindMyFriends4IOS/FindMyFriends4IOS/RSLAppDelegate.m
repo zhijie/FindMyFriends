@@ -95,7 +95,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         rootController= navigationController;
     } else {
         splitController = [[UISplitViewController alloc] init];
-        contactController = [[RSLContactViewController alloc] initWithNibName:nil bundle:nil];
+        contactController = [[RSLContactViewController alloc] initWithNibName:@"RSLContactViewController" bundle:nil];
         
         UINavigationController* masterNav = [[UINavigationController alloc] initWithRootViewController:contactController];
         UINavigationController* detailNav = [[UINavigationController alloc] initWithRootViewController:mapController];
@@ -531,7 +531,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-	
+	DDLogVerbose(@"%@", [iq description]);
+    
 	return NO;
 }
 
@@ -637,5 +638,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	}
 	
 }
+
+#pragma mark self defined XMPP operations
+
 
 @end

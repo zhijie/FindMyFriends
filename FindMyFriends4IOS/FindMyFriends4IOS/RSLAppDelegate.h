@@ -66,5 +66,4 @@
 - (BOOL)connect;
 - (void)disconnect;
 
-
 @end
