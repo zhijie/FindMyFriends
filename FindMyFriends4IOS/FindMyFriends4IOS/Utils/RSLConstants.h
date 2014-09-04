@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 
-
+#define SERVER_IP @"121.199.30.240"
 
 extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;

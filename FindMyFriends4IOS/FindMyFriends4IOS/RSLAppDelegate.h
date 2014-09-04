@@ -16,7 +16,9 @@
 #import "RSLMapViewController.h"
 #import "RSLContactViewController.h"
 
-@interface RSLAppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate>
+#import "BMapKit.h"
+
+@interface RSLAppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, BMKGeneralDelegate>
 {
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
@@ -33,6 +35,8 @@
 	BOOL customCertEvaluation;
 	
 	BOOL isXmppConnected;
+    
+    BMKMapManager* mapManager;
 }
 
 @property (nonatomic, strong, readonly) XMPPStream *xmppStream;

@@ -22,6 +22,7 @@
 #import "DDTTYLogger.h"
 
 #import <CFNetwork/CFNetwork.h>
+#import "MobClick.h"
 
 #import "RSLConstants.h"
 
@@ -70,12 +71,19 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // baidu map setup
+    mapManager = [[BMKMapManager alloc]init];
+	BOOL ret = [mapManager start:@"qYXiyTSdeByzVfA5tjbEjC8F" generalDelegate:self];
+	if (!ret) {
+		NSLog(@"manager start failed!");
+	}
+    // umeng setup
+    [MobClick startWithAppkey:@"54080bbffd98c5cc6e00b70a" reportPolicy:BATCH   channelId:@"Channel ID"];
+    
 	// Configure logging framework
-	
 	[DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:XMPP_LOG_FLAG_SEND_RECV];
     
     // Setup the XMPP stream
-    
 	[self setupStream];
     
     mapController= [[RSLMapViewController alloc] initWithNibName:@"RSLMapViewController" bundle:nil];
