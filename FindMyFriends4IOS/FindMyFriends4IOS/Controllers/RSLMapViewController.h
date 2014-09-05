@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
+#import "XMPP.h"
 @interface RSLMapViewController : UIViewController<UISplitViewControllerDelegate,BMKLocationServiceDelegate,BMKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
+@property (nonatomic,strong) XMPPJID* roomJid;
+
 @end

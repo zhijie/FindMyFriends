@@ -10,18 +10,24 @@
 #import "RSLAppDelegate.h"
 #import "RSLLoginViewController.h"
 #import "RSLContactViewController.h"
+#import "RSLConstants.h"
+#import "XMPPFramework.h"
+#import "DDLog.h"
 
 @interface RSLMapViewController () {
     RSLLoginViewController* loginController;
     BMKLocationService* locationService;
-
-
+    
+    RSLAppDelegate* appDelegate;
+    XMPPJID* myJid;
+    BOOL isMapMovedToUserCenter;
 }
 
 @end
 
 @implementation RSLMapViewController
 @synthesize mapView;
+@synthesize roomJid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +58,15 @@
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
     locationService = [[BMKLocationService alloc]init];
-    
+    appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    myJid = appDelegate.xmppStream.myJID;
+}
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    [appDelegate.xmppStream removeDelegate:self];
 }
 
 -(void)setting
@@ -64,16 +78,18 @@
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         RSLContactViewController* contacts = [[RSLContactViewController alloc] initWithNibName:@"RSLContactViewController" bundle:nil];
-        RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.rootController presentViewController:contacts animated:YES completion:nil];
     }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [mapView viewWillAppear];
+    mapView.zoomLevel = 17;
     mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     locationService.delegate = self;
     mapView.showsUserLocation = YES;
+    
+    [appDelegate.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [locationService startUserLocationService ];
 }
 
@@ -88,19 +104,18 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
     
 	if (![appDelegate connect])
 	{
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC);
 		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 			loginController = [[RSLLoginViewController alloc] initWithNibName:@"RSLLoginViewController" bundle:nil];
-            RSLAppDelegate *appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
             [appDelegate.rootController presentViewController:loginController animated:YES completion:nil];
 		});
 	}
     
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -168,6 +183,9 @@
 {
     [mapView updateLocationData:userLocation];
     NSLog(@"heading is %@",userLocation.heading);
+    if (roomJid != nil) {
+//        [self sendMessage:[NSString stringWithFormat:@"GPS:%f,%f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude,userLocation.heading.magneticHeading]];
+    }
 }
 
 /**
@@ -178,6 +196,18 @@
 {
     //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [mapView updateLocationData:userLocation];
+    
+    if (!isMapMovedToUserCenter) {
+        isMapMovedToUserCenter = YES;
+        CLLocationCoordinate2D coordnate;
+        coordnate.latitude =userLocation.location.coordinate.latitude;
+        coordnate.longitude =userLocation.location.coordinate.longitude;
+        [mapView setCenterCoordinate:coordnate animated:YES];
+    }
+    
+    if (roomJid != nil) {
+        [self sendMessage:[NSString stringWithFormat:@"GPS:%f,%f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude,userLocation.heading.magneticHeading]];
+    }
 }
 
 /**
@@ -197,6 +227,158 @@
 - (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
     NSLog(@"location error");
+}
+// Override
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        return newAnnotationView;
+    }
+    return nil;
+}
+
+#pragma mark xmpp delegate
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
+{
+//	[messageField setEnabled:YES];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+    XMPPJID* fromJid = [message from];
+
+    NSString *messageStr = [[message elementForName:@"body"] stringValue];
+    //parse coordnate
+    CLLocationCoordinate2D coord ;
+    if ([messageStr hasPrefix:@"GPS:"]) {
+        NSArray* gpsinfo = [[messageStr substringFromIndex:4] componentsSeparatedByString:@","];
+        if (gpsinfo && gpsinfo.count == 3) {
+            coord.latitude = [[gpsinfo objectAtIndex:0] doubleValue];
+            coord.longitude= [[gpsinfo objectAtIndex:1] doubleValue];
+        }
+    }
+    
+    NSArray* annotations = mapView.annotations;
+    
+    BOOL alreadyIn = NO;
+    for (int i =0 ; i < annotations.count; i ++) {
+        BMKPointAnnotation* anno = [annotations objectAtIndex:i];
+        NSString* username = fromJid.resource;
+        if ([[anno title] isEqualToString:username]) {
+            alreadyIn = YES;
+            //update location
+            anno.coordinate = coord;
+            break;
+        }
+    }
+    if (!alreadyIn) {
+        BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+        annotation.coordinate = coord;
+        annotation.title = fromJid.resource;
+        [mapView addAnnotation:annotation];
+    }
+    
+}
+
+- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error
+{
+//	[messageField setEnabled:NO];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark XMPPRoom Delegate
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)xmppRoomDidCreate:(XMPPRoom *)sender
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:@"did create room"];
+}
+
+- (void)xmppRoomDidJoin:(XMPPRoom *)sender
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:@"did join room"];
+}
+
+- (void)xmppRoomDidLeave:(XMPPRoom *)sender
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:@"did leave room"];
+}
+
+- (void)xmppRoom:(XMPPRoom *)sender occupantDidJoin:(XMPPJID *)occupantJID
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:[NSString stringWithFormat:@"occupant did join: %@", [occupantJID resource]]];
+}
+
+- (void)xmppRoom:(XMPPRoom *)sender occupantDidLeave:(XMPPJID *)occupantJID
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:[NSString stringWithFormat:@"occupant did join: %@", [occupantJID resource]]];
+}
+
+- (void)xmppRoom:(XMPPRoom *)sender didReceiveMessage:(XMPPMessage *)message fromOccupant:(XMPPJID *)occupantJID
+{
+//	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//	[logField setStringValue:[NSString stringWithFormat:@"did receive msg from: %@", [occupantJID resource]]];
+    
+    XMPPJID* fromJid = occupantJID;
+	if([message isChatMessageWithBody])
+	{
+		NSString *messageStr = [[message elementForName:@"body"] stringValue];
+        //parse coordnate
+        CLLocationCoordinate2D coord ;
+        if ([messageStr hasPrefix:@"GPS:"]) {
+            NSArray* gpsinfo = [[messageStr substringFromIndex:4] componentsSeparatedByString:@","];
+            if (gpsinfo && gpsinfo.count == 3) {
+                coord.latitude = [[gpsinfo objectAtIndex:0] doubleValue];
+                coord.longitude= [[gpsinfo objectAtIndex:1] doubleValue];
+            }
+        }
+        
+        NSArray* annotations = mapView.annotations;
+        
+        BOOL alreadyIn = NO;
+        for (int i =0 ; i < annotations.count; i ++) {
+            BMKAnnotationView* anno = [annotations objectAtIndex:i];
+            NSString* username = fromJid.resource;
+            if ([[anno.annotation description] isEqualToString:username]) {
+                alreadyIn = YES;
+                //update location
+                break;
+            }
+        }
+        if (!alreadyIn) {
+            BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+            annotation.coordinate = coord;
+            annotation.title = fromJid.resource;
+            [mapView addAnnotation:annotation];
+        }
+        
+	}
+}
+
+
+- (void)sendMessage:(NSString*)messageStr
+{
+	if([messageStr length] > 0)
+	{
+		NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+		[body setStringValue:messageStr];
+		
+		NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
+		[message addAttributeWithName:@"type" stringValue:@"groupchat"];
+		[message addAttributeWithName:@"to" stringValue:roomJid.bare];
+		[message addChild:body];
+		
+		[appDelegate.xmppStream sendElement:message];
+	}
 }
 
 @end

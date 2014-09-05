@@ -13,6 +13,7 @@
 #import "XMPPLogging.h"
 #import "RSLConstants.h"
 #import "RSLAppDelegate.h"
+#import "XMPPRoomMemoryStorage.h"
 
 #import "DDLog.h"
 #import "DDTTYLogger.h"
@@ -47,8 +48,16 @@
     
     roomJidArray = [[NSArray alloc] init];
     roomNameArray = [[NSArray alloc] init];
+    
+    appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    [appDelegate.xmppStream removeDelegate:self];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,8 +68,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    appDelegate = (RSLAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+
 
     [self requestGroupList];
 }
@@ -87,6 +95,21 @@
     }
 
 	return NO;
+}
+
+- (void)xmppRoomDidCreate:(XMPPRoom *)sender{
+//    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+}
+
+- (void)xmppRoomDidJoin:(XMPPRoom *)sender{
+//    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+//    XMPPPresence* presence = [[XMPPPresence alloc] initWithType:@"available" to:sender.roomJID];
+//    [appDelegate.xmppStream sendElement:presence];
+    
+    appDelegate.mapController.roomJid = sender.roomJID;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
@@ -127,7 +150,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    XMPPRoomMemoryStorage * _roomMemory = [[XMPPRoomMemoryStorage alloc]init];
+    NSString* roomID = [NSString stringWithFormat:@"%@@%@",[roomNameArray objectAtIndex:indexPath.row],JABBER_ROOM_IP];
+    XMPPJID * roomJID = [XMPPJID jidWithString:roomID];
+    XMPPRoom* xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:_roomMemory
+                                                           jid:roomJID
+                                                 dispatchQueue:dispatch_get_main_queue()];
+    [xmppRoom activate:appDelegate.xmppStream];
+    [xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppRoom joinRoomUsingNickname:appDelegate.xmppStream.myJID.user
+                            history:nil
+                           password:nil];
 }
 
 
