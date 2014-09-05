@@ -156,7 +156,9 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-
+    if (mapView ) {
+        [self.view setNeedsUpdateConstraints];
+    }
 }
 
 
@@ -234,7 +236,7 @@
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        newAnnotationView.animatesDrop = NO;// 设置该标注点动画显示
         return newAnnotationView;
     }
     return nil;
@@ -271,6 +273,8 @@
             alreadyIn = YES;
             //update location
             anno.coordinate = coord;
+            [mapView removeAnnotation:anno];
+            [mapView addAnnotation:anno];
             break;
         }
     }
@@ -327,41 +331,6 @@
 {
 //	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 //	[logField setStringValue:[NSString stringWithFormat:@"did receive msg from: %@", [occupantJID resource]]];
-    
-    XMPPJID* fromJid = occupantJID;
-	if([message isChatMessageWithBody])
-	{
-		NSString *messageStr = [[message elementForName:@"body"] stringValue];
-        //parse coordnate
-        CLLocationCoordinate2D coord ;
-        if ([messageStr hasPrefix:@"GPS:"]) {
-            NSArray* gpsinfo = [[messageStr substringFromIndex:4] componentsSeparatedByString:@","];
-            if (gpsinfo && gpsinfo.count == 3) {
-                coord.latitude = [[gpsinfo objectAtIndex:0] doubleValue];
-                coord.longitude= [[gpsinfo objectAtIndex:1] doubleValue];
-            }
-        }
-        
-        NSArray* annotations = mapView.annotations;
-        
-        BOOL alreadyIn = NO;
-        for (int i =0 ; i < annotations.count; i ++) {
-            BMKAnnotationView* anno = [annotations objectAtIndex:i];
-            NSString* username = fromJid.resource;
-            if ([[anno.annotation description] isEqualToString:username]) {
-                alreadyIn = YES;
-                //update location
-                break;
-            }
-        }
-        if (!alreadyIn) {
-            BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
-            annotation.coordinate = coord;
-            annotation.title = fromJid.resource;
-            [mapView addAnnotation:annotation];
-        }
-        
-	}
 }
 
 
