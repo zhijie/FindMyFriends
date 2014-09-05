@@ -19,6 +19,8 @@
 
 @interface RSLContactViewController (){
     RSLAppDelegate* appDelegate;
+    NSArray* roomJidArray;
+    NSArray* roomNameArray;
 }
 
 @end
@@ -43,6 +45,8 @@
     tableview.delegate = self;
     tableview.dataSource = self;
     
+    roomJidArray = [[NSArray alloc] init];
+    roomNameArray = [[NSArray alloc] init];
 }
 
 
@@ -66,15 +70,30 @@
 {
 //	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 //	DDLogVerbose(@"%@", [iq description]);
-//
-    
+    if([iq.type isEqualToString:@"result"] && [iq.fromStr isEqualToString:JABBER_ROOM_IP]){
+        NSArray* children = [[iq.children objectAtIndex:0] children];
+        NSMutableArray* jidArray = [[NSMutableArray alloc] init];
+        NSMutableArray* nameArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < children.count; i++) {
+            DDXMLElement* element = [children objectAtIndex:i];
+            NSString* jid = [element attributeStringValueForName:@"jid"];
+            NSString* name = [element attributeStringValueForName:@"name"];
+            [jidArray addObject:jid];
+            [nameArray addObject:name];
+        }
+        roomJidArray = jidArray;
+        roomNameArray = nameArray;
+        [tableview reloadData];
+    }
+
 	return NO;
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return roomJidArray.count;
 }
+
 -(void)requestGroupList
 {
     if (appDelegate.xmppStream.isConnected) {
@@ -100,7 +119,7 @@
     }
     
     NSString *labelFormatString = NSLocalizedString(@"Row %i", @"master table view label format string");
-	cell.textLabel.text = [NSString stringWithFormat:labelFormatString, indexPath.row];
+	cell.textLabel.text = [roomNameArray objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -108,7 +127,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
 }
 
 

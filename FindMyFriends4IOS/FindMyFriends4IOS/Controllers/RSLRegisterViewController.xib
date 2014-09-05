@@ -6,10 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RSLRegisterViewController">
             <connections>
-                <outlet property="loginBtn" destination="CGD-p2-VRT" id="acx-Wg-KWG"/>
-                <outlet property="passwordTF" destination="h3J-1Z-FjS" id="Bvj-nl-ZoS"/>
-                <outlet property="registerBtn" destination="FfU-cC-e7E" id="Cr0-5g-Sv1"/>
-                <outlet property="usernameTF" destination="f0d-ll-ptS" id="u7F-k2-AzN"/>
+                <outlet property="loginBtn" destination="CGD-p2-VRT" id="Vj4-dX-kFs"/>
+                <outlet property="passwordTF" destination="h3J-1Z-FjS" id="sh9-gR-duZ"/>
+                <outlet property="registerBtn" destination="FfU-cC-e7E" id="Dvf-dO-FOf"/>
+                <outlet property="usernameTF" destination="f0d-ll-ptS" id="Tkh-Zp-Kum"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,7 +44,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onRegister:" destination="-1" eventType="touchUpInside" id="PV1-uS-OQR"/>
+                        <action selector="onRegister:" destination="-1" eventType="touchUpInside" id="IOU-qq-kkO"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGD-p2-VRT">
@@ -54,7 +54,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="AML-V7-ez7"/>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="25x-uu-ZzF"/>
                     </connections>
                 </button>
             </subviews>

@@ -639,6 +639,27 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	
 }
 
+#pragma mark baidu
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"network status");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"permission granted");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
 #pragma mark self defined XMPP operations
 
 

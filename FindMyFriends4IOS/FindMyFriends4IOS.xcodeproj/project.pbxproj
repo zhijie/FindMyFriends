@@ -199,6 +199,9 @@
 		5D262A2719B847AE00DE420C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D262A2619B847AE00DE420C /* OpenGLES.framework */; };
 		5D262A2919B847B600DE420C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D262A2819B847B600DE420C /* QuartzCore.framework */; };
 		5D262A2B19B85E3600DE420C /* RSLContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */; };
+		5D3DC9AD19B963DA00E33AD4 /* RSLMapViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3DC9AC19B963DA00E33AD4 /* RSLMapViewController~ipad.xib */; };
+		5D3DC9AF19B974F400E33AD4 /* RSLLoginViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3DC9AE19B974F400E33AD4 /* RSLLoginViewController~ipad.xib */; };
+		5D3DC9B119B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3DC9B019B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -642,6 +645,9 @@
 		5D262A2619B847AE00DE420C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5D262A2819B847B600DE420C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSLContactViewController.xib; sourceTree = "<group>"; };
+		5D3DC9AC19B963DA00E33AD4 /* RSLMapViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RSLMapViewController~ipad.xib"; sourceTree = "<group>"; };
+		5D3DC9AE19B974F400E33AD4 /* RSLLoginViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RSLLoginViewController~ipad.xib"; sourceTree = "<group>"; };
+		5D3DC9B019B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RSLRegisterViewController~ipad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,11 +782,14 @@
 				5D2626E719B8279C00DE420C /* RSLLoginViewController.h */,
 				5D2626E819B8279C00DE420C /* RSLLoginViewController.m */,
 				5D2626E919B8279C00DE420C /* RSLLoginViewController.xib */,
+				5D3DC9AE19B974F400E33AD4 /* RSLLoginViewController~ipad.xib */,
 				5D2626EC19B827B000DE420C /* RSLRegisterViewController.h */,
 				5D2626ED19B827B000DE420C /* RSLRegisterViewController.m */,
 				5D2626EE19B827B000DE420C /* RSLRegisterViewController.xib */,
+				5D3DC9B019B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib */,
 				5D2628FE19B834E600DE420C /* RSLMapViewController.h */,
 				5D2628FF19B834E600DE420C /* RSLMapViewController.m */,
+				5D3DC9AC19B963DA00E33AD4 /* RSLMapViewController~ipad.xib */,
 				5D26290019B834E600DE420C /* RSLMapViewController.xib */,
 				5D26290319B8351900DE420C /* RSLContactViewController.h */,
 				5D26290419B8351900DE420C /* RSLContactViewController.m */,
@@ -1936,6 +1945,8 @@
 				5D26297D19B842DF00DE420C /* IQKeyboardManager.bundle in Resources */,
 				5D26286D19B82C5D00DE420C /* copying.txt in Resources */,
 				5D2626EB19B8279C00DE420C /* RSLLoginViewController.xib in Resources */,
+				5D3DC9AD19B963DA00E33AD4 /* RSLMapViewController~ipad.xib in Resources */,
+				5D3DC9AF19B974F400E33AD4 /* RSLLoginViewController~ipad.xib in Resources */,
 				5D262A2119B8475A00DE420C /* readme.txt in Resources */,
 				5D26298019B842DF00DE420C /* LICENSE.txt in Resources */,
 				5D2628E519B82C5D00DE420C /* README.txt in Resources */,
@@ -1945,6 +1956,7 @@
 				5D262A2019B8475A00DE420C /* mapapi.bundle in Resources */,
 				5D2626C519B823D700DE420C /* Images.xcassets in Resources */,
 				5D2626F019B827B000DE420C /* RSLRegisterViewController.xib in Resources */,
+				5D3DC9B119B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib in Resources */,
 				5D262A2B19B85E3600DE420C /* RSLContactViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMapKit.h"
+@interface RSLMapViewController : UIViewController<UISplitViewControllerDelegate,BMKLocationServiceDelegate,BMKMapViewDelegate>
 
-@interface RSLMapViewController : UIViewController<UISplitViewControllerDelegate>
-
+@property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @end
