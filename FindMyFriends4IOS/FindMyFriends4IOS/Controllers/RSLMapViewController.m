@@ -13,6 +13,7 @@
 #import "RSLConstants.h"
 #import "XMPPFramework.h"
 #import "DDLog.h"
+#import "RSLSettingViewController.h"
 
 @interface RSLMapViewController () {
     RSLLoginViewController* loginController;
@@ -43,8 +44,7 @@
     [super viewDidLoad];
     self.title = @"Map";
     
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showContacts)];
-    leftBarButtonItem.title = @"Contacts";
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rooms" style:UIBarButtonItemStylePlain target:self action:@selector(showContacts)];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
 //    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -71,7 +71,8 @@
 
 -(void)setting
 {
-    
+    RSLSettingViewController* setting = [[RSLSettingViewController alloc] initWithNibName:@"RSLSettingViewController" bundle:nil];
+    [self.navigationController pushViewController:setting animated:YES];
 }
 
 -(void)showContacts
@@ -79,6 +80,11 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         RSLContactViewController* contacts = [[RSLContactViewController alloc] initWithNibName:@"RSLContactViewController" bundle:nil];
         [appDelegate.rootController presentViewController:contacts animated:YES completion:nil];
+    }else {
+        UISplitViewController* spv = appDelegate.splitController;
+        
+        self.hideMaster= !self.hideMaster;
+        [ spv.view setNeedsLayout ];
     }
 }
 
@@ -151,6 +157,12 @@
 //    }
 }
 
+//- (BOOL)splitViewController: (UISplitViewController*)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+//{
+//    //This method is only available in iOS5
+//    
+//    return self.hideMaster;
+//}
 
 #pragma mark - Rotation support
 
@@ -158,13 +170,15 @@
 {
     if (mapView ) {
         [self.view setNeedsUpdateConstraints];
+        [mapView viewWillDisappear];
+        [mapView viewWillAppear];
     }
 }
 
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-
+    
 }
 
 #pragma mark mapview

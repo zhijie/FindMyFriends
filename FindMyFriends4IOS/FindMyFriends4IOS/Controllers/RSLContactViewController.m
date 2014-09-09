@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Contacts";
+    self.title = @"Rooms";
     tableview.delegate = self;
     tableview.dataSource = self;
     
@@ -175,4 +175,10 @@
 }
 */
 
+- (IBAction)onCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onAdd:(id)sender {
+}
 @end

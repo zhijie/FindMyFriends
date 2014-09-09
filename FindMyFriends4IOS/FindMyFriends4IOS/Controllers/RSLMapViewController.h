@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (nonatomic,strong) XMPPJID* roomJid;
+@property (nonatomic) BOOL hideMaster;
 
 @end

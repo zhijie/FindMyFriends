@@ -10,5 +10,7 @@
 
 @interface RSLContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+- (IBAction)onCancel:(id)sender;
+- (IBAction)onAdd:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @end

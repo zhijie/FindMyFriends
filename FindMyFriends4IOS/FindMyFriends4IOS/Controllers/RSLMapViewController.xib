@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-PG-XCD" customClass="BMKMapView">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-PG-XCD" customClass="BMKMapView">
                     <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -24,7 +24,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="a2r-PG-XCD" secondAttribute="bottom" id="K26-aX-hlI"/>
-                <constraint firstItem="a2r-PG-XCD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="TuC-4Q-7rl"/>
+                <constraint firstItem="a2r-PG-XCD" firstAttribute="top" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="TuC-4Q-7rl"/>
                 <constraint firstItem="a2r-PG-XCD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VgX-uc-ZD6"/>
                 <constraint firstAttribute="trailing" secondItem="a2r-PG-XCD" secondAttribute="trailing" id="sRX-jx-wBh"/>
             </constraints>

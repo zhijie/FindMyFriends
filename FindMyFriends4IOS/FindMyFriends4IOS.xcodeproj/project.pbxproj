@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D08BD8319BE9BF10048A5A0 /* RSLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D08BD8119BE9BF10048A5A0 /* RSLSettingViewController.m */; };
+		5D08BD8419BE9BF10048A5A0 /* RSLSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D08BD8219BE9BF10048A5A0 /* RSLSettingViewController.xib */; };
 		5D2626B319B823D700DE420C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2626B219B823D700DE420C /* Foundation.framework */; };
 		5D2626B519B823D700DE420C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2626B419B823D700DE420C /* CoreGraphics.framework */; };
 		5D2626B719B823D700DE420C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2626B619B823D700DE420C /* UIKit.framework */; };
@@ -215,6 +217,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D08BD8019BE9BF10048A5A0 /* RSLSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLSettingViewController.h; sourceTree = "<group>"; };
+		5D08BD8119BE9BF10048A5A0 /* RSLSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLSettingViewController.m; sourceTree = "<group>"; };
+		5D08BD8219BE9BF10048A5A0 /* RSLSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSLSettingViewController.xib; sourceTree = "<group>"; };
 		5D2626AF19B823D700DE420C /* FindMyFriends4IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyFriends4IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2626B219B823D700DE420C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D2626B419B823D700DE420C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -794,6 +799,9 @@
 				5D26290319B8351900DE420C /* RSLContactViewController.h */,
 				5D26290419B8351900DE420C /* RSLContactViewController.m */,
 				5D262A2A19B85E3600DE420C /* RSLContactViewController.xib */,
+				5D08BD8019BE9BF10048A5A0 /* RSLSettingViewController.h */,
+				5D08BD8119BE9BF10048A5A0 /* RSLSettingViewController.m */,
+				5D08BD8219BE9BF10048A5A0 /* RSLSettingViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1956,6 +1964,7 @@
 				5D262A2019B8475A00DE420C /* mapapi.bundle in Resources */,
 				5D2626C519B823D700DE420C /* Images.xcassets in Resources */,
 				5D2626F019B827B000DE420C /* RSLRegisterViewController.xib in Resources */,
+				5D08BD8419BE9BF10048A5A0 /* RSLSettingViewController.xib in Resources */,
 				5D3DC9B119B9756E00E33AD4 /* RSLRegisterViewController~ipad.xib in Resources */,
 				5D262A2B19B85E3600DE420C /* RSLContactViewController.xib in Resources */,
 			);
@@ -2045,6 +2054,7 @@
 				5D2628D119B82C5D00DE420C /* XMPPMessage+XEP_0308.m in Sources */,
 				5D26286919B82C5D00DE420C /* XMPPXOAuth2Google.m in Sources */,
 				5D26286F19B82C5D00DE420C /* XMPPIQ.m in Sources */,
+				5D08BD8319BE9BF10048A5A0 /* RSLSettingViewController.m in Sources */,
 				5D26288B19B82C5D00DE420C /* XMPPRoom.xcdatamodeld in Sources */,
 				5D26288919B82C5D00DE420C /* XMPPLastActivity.m in Sources */,
 				5D26287519B82C5D00DE420C /* XMPPStream.m in Sources */,
