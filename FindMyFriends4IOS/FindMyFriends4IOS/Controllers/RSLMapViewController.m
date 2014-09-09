@@ -22,6 +22,7 @@
     RSLAppDelegate* appDelegate;
     XMPPJID* myJid;
     BOOL isMapMovedToUserCenter;
+    
 }
 
 @end
@@ -251,6 +252,7 @@
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
         newAnnotationView.animatesDrop = NO;// 设置该标注点动画显示
+
         return newAnnotationView;
     }
     return nil;
@@ -289,6 +291,8 @@
             anno.coordinate = coord;
             [mapView removeAnnotation:anno];
             [mapView addAnnotation:anno];
+//            [mapView selectAnnotation:anno animated:NO];
+            
             break;
         }
     }
