@@ -4,6 +4,8 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.GeofenceClient;
 import com.baidu.location.LocationClient;
+import com.baidu.mapapi.SDKInitializer;
+
 import android.app.Application;
 import android.app.Service;
 import android.os.Vibrator;
@@ -25,6 +27,8 @@ public class MyApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		SDKInitializer.initialize(this);
+		
 		mLocationClient = new LocationClient(this.getApplicationContext());
 		mMyLocationListener = new MyLocationListener();
 		mLocationClient.registerLocationListener(mMyLocationListener);

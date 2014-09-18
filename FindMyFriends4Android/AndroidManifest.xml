@@ -30,7 +30,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
+    
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+    
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -78,6 +83,8 @@
             android:name=".ContactActivity"
             android:label="@string/title_activity_contact" >
         </activity>
+        
+
     </application>
 
 </manifest>
