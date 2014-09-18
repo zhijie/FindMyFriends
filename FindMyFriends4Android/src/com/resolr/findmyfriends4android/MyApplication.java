@@ -1,5 +1,7 @@
 package com.resolr.findmyfriends4android;
 
+import org.jivesoftware.smack.SmackAndroid;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.GeofenceClient;
@@ -28,6 +30,7 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		SDKInitializer.initialize(this);
+		SmackAndroid.init(this);
 		
 		mLocationClient = new LocationClient(this.getApplicationContext());
 		mMyLocationListener = new MyLocationListener();
